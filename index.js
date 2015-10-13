@@ -1,0 +1,15 @@
+if (!process.env.NEW_RELIC_LICENSE_KEY) return
+process.env.NEW_RELIC_HOME = __dirname + '/test';
+var newrelic = require('newrelic');
+
+module.exports = function(req, res, next) {
+  res.locals.artsyNewRelicHead = newrelic.getBrowserTimingHeader();
+  next();
+}
+
+process.on('uncaughtException', function(err) {
+  console.warn("Uncaught exception, process exited.");
+  console.warn(err.stack);
+  newrelic.noticeError(err);
+  process.exit(1);
+});
