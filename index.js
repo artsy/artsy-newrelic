@@ -1,4 +1,6 @@
-if (!process.env.NEW_RELIC_LICENSE_KEY) return
+if (!process.env.NEW_RELIC_LICENSE_KEY) {
+  return module.exports = function(req, res, next) { next() }
+}
 process.env.NEW_RELIC_HOME = __dirname + '/test';
 var newrelic = require('newrelic');
 
