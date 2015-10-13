@@ -1,11 +1,11 @@
 if (!process.env.NEW_RELIC_LICENSE_KEY) {
   return module.exports = function(req, res, next) { next() }
 }
-process.env.NEW_RELIC_HOME = __dirname + '/test';
+process.env.NEW_RELIC_HOME = __dirname;
 var newrelic = require('newrelic');
 
 module.exports = function(req, res, next) {
-  res.locals.artsyNewRelicHead = newrelic.getBrowserTimingHeader();
+  res.locals.newRelicHead = newrelic.getBrowserTimingHeader();
   next();
 }
 

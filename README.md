@@ -1,4 +1,5 @@
 # artsy-newrelic
+
 Plug-and-play NewRelic module wrapper configured for Artsy Node apps.
 
 ## Example
@@ -15,7 +16,7 @@ Add browser-side detection
 
 ````jade
 head
-  != artsyNewRelicHead
+  != newRelicHead
 ````
 
 Use env vars to configure (values are defaults)
@@ -26,7 +27,7 @@ NEW_RELIC_APP_NAME=process.env.APP_NAME
 NEW_RELIC_ERROR_COLLECTOR_IGNORE_ERROR_CODES=400,401,402,[...],499
 ````
 
-Leave a license key out in dev/test environments and NewRelic won't bother you.
+Leave `NEW_RELIC_LICENSE_KEY` out in dev/test environments and NewRelic won't bother you.
 
 ## Testing
 
