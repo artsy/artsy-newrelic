@@ -1,0 +1,27 @@
+{
+  "name": "artsy-newrelic",
+  "version": "1.0.0",
+  "description": "Plug-and-play NewRelic module wrapper configured for Artsy Node apps.",
+  "main": "index.js",
+  "dependencies": {
+    "jade": "^1.11.0",
+    "newrelic": "^1.22.1"
+  },
+  "devDependencies": {
+    "express": "^4.13.3"
+  },
+  "scripts": {
+    "test": "mocha",
+    "example": "foreman run node example/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artsy/artsy-newrelic.git"
+  },
+  "author": "Craig Spaeth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/artsy/artsy-newrelic/issues"
+  },
+  "homepage": "https://github.com/artsy/artsy-newrelic#readme"
+}
