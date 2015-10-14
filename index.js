@@ -10,7 +10,7 @@ module.exports = function(req, res, next) {
 }
 
 process.on('uncaughtException', function(err) {
-  console.error("Uncaught exception.");
+  console.error("Uncaught Exception");
   console.error(err.stack);
   newrelic.noticeError(err);
   newrelic.agent.harvest(function() {
