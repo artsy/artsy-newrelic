@@ -9,3 +9,7 @@ app.get('/', function(req, res, next) {
 });
 
 app.listen(4000, function() { console.log('Listening on 4000') });
+
+setTimeout(function() {
+  throw new Error("Fail WHALE");
+}, 500)
