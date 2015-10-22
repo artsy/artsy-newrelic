@@ -13,8 +13,8 @@ exports.config = {
    * Your New Relic license key.
    */
   license_key : process.env.NEW_RELIC_LICENSE_KEY,
-  ignore_status_codes: Array.apply(null, Array(100)).map(function (n, i) {
-    return 400 + i;
+  ignore_status_codes: Array.apply(null, Array(499)).map(function (n, i) {
+    return i;
   }),
   logging : {
     /**
