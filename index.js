@@ -14,6 +14,7 @@ var UncaughtError = function UncaughtError(err) {
   this.message = err.message || err.toString();
   this.stack = err.stack;
 };
+UncaughtError.prototype = Error.prototype;
 
 process.on('uncaughtException', function(e) {
   var err = new UncaughtError(e);
