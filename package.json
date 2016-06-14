@@ -1,6 +1,6 @@
 {
   "name": "artsy-newrelic",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Plug-and-play NewRelic module wrapper configured for Artsy Node apps.",
   "main": "index.js",
   "dependencies": {

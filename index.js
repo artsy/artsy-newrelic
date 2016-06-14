@@ -9,11 +9,21 @@ module.exports = function(req, res, next) {
   next();
 }
 
-process.on('uncaughtException', function(err) {
+var UncaughtError = function UncaughtError(err) {
+  this.name = 'UncaughtError';
+  this.message = err.message || err.toString();
+  this.stack = err.stack;
+};
+UncaughtError.prototype = Error.prototype;
+
+process.on('uncaughtException', function(e) {
+  var err = new UncaughtError(e);
   console.error("Uncaught Exception", err.stack);
   newrelic.noticeError(err, { crash: true });
-  newrelic.agent.harvest(function() {
-    console.log("Sent to NewRelic, exiting process.");
+  newrelic.shutdown({ collectPendingData: true }, function(err) {
+    err
+      ? console.log("Failed to send to NewRelic.", err)
+      : console.log("Sent to NewRelic, exiting process.");
     process.exit(1);
   });
 });
