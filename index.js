@@ -12,8 +12,10 @@ module.exports = function(req, res, next) {
 process.on('uncaughtException', function(err) {
   console.error("Uncaught Exception", err.stack);
   newrelic.noticeError(err, { crash: true });
-  newrelic.agent.harvest(function() {
-    console.log("Sent to NewRelic, exiting process.");
+  newrelic.shutdown({ collectPendingData: true }, function(err) {
+    err
+      ? console.log("Failed to send to NewRelic.", err)
+      : console.log("Sent to NewRelic, exiting process.");
     process.exit(1);
   });
 });
