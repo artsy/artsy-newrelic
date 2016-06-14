@@ -9,7 +9,14 @@ module.exports = function(req, res, next) {
   next();
 }
 
-process.on('uncaughtException', function(err) {
+var UncaughtError = function UncaughtError(err) {
+  this.name = 'UncaughtError';
+  this.message = err.message || err.toString();
+  this.stack = err.stack;
+};
+
+process.on('uncaughtException', function(e) {
+  var err = new UncaughtError(e);
   console.error("Uncaught Exception", err.stack);
   newrelic.noticeError(err, { crash: true });
   newrelic.shutdown({ collectPendingData: true }, function(err) {
