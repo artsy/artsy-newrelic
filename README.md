@@ -1,6 +1,11 @@
 # artsy-newrelic
 
-Plug-and-play NewRelic module wrapper configured for Artsy Node apps.
+Plug-and-play NewRelic module wrapper configured for Artsy Node apps. Features include:
+
+* Middleware to inject browser monitoring
+* Report uncaught exceptions
+* No-op when the `NEW_RELIC_LICENSE_KEY` environment variable is omitted
+* Timeout after 30 seconds and report the timeout
 
 ## Example
 
